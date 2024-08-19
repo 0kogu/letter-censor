@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Transformer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Word Transformer</h1>
+        <form method="post">
+            <div class="textareas">
+                <textarea name="input_text" placeholder="Enter words, each on a new line...">{{ input_text if input_text else '' }}</textarea>
+                <textarea readonly placeholder="Transformed words will appear here...">{{ output_text if output_text else '' }}</textarea>
+                
+            </div>
+            <button type="submit">Transform Words</button>
+        </form>
+    </div>
+</body>
+</html>
