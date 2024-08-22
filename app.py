@@ -5,9 +5,8 @@ app = Flask(__name__)
 
 def transform_word(word):
     
-    #get the index of spaces, if the given word contains any
+    #Get the index of spaces, if the given word contains any
     spaces_index = []
-
     letter_index = 0    
     for letter in word:
 
@@ -18,18 +17,16 @@ def transform_word(word):
         else:
             letter_index += 1
 
-
-    #index of censored letters, make sure we don't censor spaces
-    
+    #Generate indexes to be censored, making sure we don't censor spaces
     censored_letters = round(len(word)*0.3)  #how many letters will be censored
-    picked_indexes = [] #index of censored letters
+    picked_indexes = [] #index of already censored letters
     
     for _ in range(censored_letters):
         censored_letter_index = random.choice([i for i in range(0,len(word)) if (i not in spaces_index) and (i not in picked_indexes)])
 
         picked_indexes.append(censored_letter_index)
 
-
+    #Turn letters into underscores
     word = list(word)
     for i in picked_indexes:
         word[i] = "_"
